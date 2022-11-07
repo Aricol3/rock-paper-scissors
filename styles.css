@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Nabla&display=swap');
+
+body {
+    margin: 0;
+    color: white;
+    background: #202731;
+    overflow-x: hidden;
+}
+
+h1.title {
+    margin-top: 1vw;
+    text-align: center;
+    font-family: 'Nabla', cursive;
+    font-size: 70px;
+}
+
+#button{
+    text-align: center;
+    padding-top: 100px;
+}
+
+.button {
+    height: 60px;
+    width: 250px;
+    text-align: center;
+    align-items: center;
+    background: linear-gradient(to bottom right, orange, coral);
+    border: 0;
+    border-radius: 2px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 2.5;
+    outline: transparent;
+    padding: 0 1rem;
+    text-decoration: none;
+    transition: box-shadow .2s ease-in-out;
+    user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+}
+
+.button:focus {
+    box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+}
+
+.button:hover {
+    box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+}
