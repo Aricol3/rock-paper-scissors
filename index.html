@@ -13,9 +13,29 @@
     <h1 class="title">ROCK PAPER SCISSORS</h1>
 </header>
 
-<div id="button">
-    <button class="button" role="button">START</button>
-</div>
+<div class="game" id="game">
+    <div class="scoreboard">
+        <div class="card player">
+            <div class="sign" id="playerSign">❔</div>
+            <p class="score" id="playerScore">Player: 0</p>
+        </div>
+        <div class="card computer">
+            <div class="sign" id="computerSign">❔</div>
+            <p class="score" id="computerScore">Computer: 0</p>
+        </div>
+    </div>
+    <div class="buttons">
+        <button class="button rock" id="rock">✊</button>
+        <button class="button paper" id="paper">✋</button>
+        <button class="button scissors" id="scissors">✌️</button>
+    </div>
+    <div id="next-button">
+        <button class="button next" id="next" onclick="nextRound()">NEXT ROUND</button>
+    </div>
 
+</div>
+<div id="start-button">
+    <button class="button start" onclick="startGame()">START</button>
+</div>
 </body>
 </html>

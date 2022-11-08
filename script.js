@@ -1,42 +1,89 @@
-let availableChoices = ["rock", "paper", "scissors"];
-
-function randomIntFromInterval(min, max) { // min and max included
-    return Math.floor(Math.random() * (max - min + 1) + min)
-}
-
 function getComputerChoice() {
-    return availableChoices[randomIntFromInterval(0, 2)];
+    let availableChoices = ["rock", "paper", "scissors"];
+    return availableChoices[Math.floor(Math.random() * 3)]
 }
+
+let rock = document.getElementById('rock');
+let paper = document.getElementById('paper');
+let scissors = document.getElementById('scissors');
+rock.addEventListener('click', () => playRound('rock', getComputerChoice()));
+paper.addEventListener('click', () => playRound('paper', getComputerChoice()));
+scissors.addEventListener('click', () => playRound('scissors', getComputerChoice()));
+
+let playerSign = document.getElementById('playerSign');
+let computerSign = document.getElementById('computerSign');
+let playerScoreDOM = document.getElementById('playerScore');
+let computerScoreDOM = document.getElementById('computerScore');
+
+let nextRoundDOM = document.getElementById('next');
+
+let playerScore = 0;
+let computerScore = 0;
 
 function playRound(playerSelection, computerSelection) {
-    switch (true) {
-        case playerSelection === "rock" && computerSelection === "paper":
-            return "You Lose! Paper beats Rock";
-            break;
-        case playerSelection === "rock" && computerSelection === "scissors":
-            return "You Win! Rock beats Scissors";
-            break;
-        case playerSelection === "paper" && computerSelection === "rock":
-            return "You Win! Paper beats Rock";
-            break;
-        case playerSelection === "paper" && computerSelection === "scissors":
-            return "You Lose! Scissors beats Paper";
-            break;
-        case playerSelection === "scissors" && computerSelection === "rock":
-            return "You Lose! Rock beats Scissors";
-            break;
-        case playerSelection === "scissors" && computerSelection === "paper":
-            return "You Win! Scissors beats Paper";
-            break;
-        default:
-            return "Tie!";
-            break;
+    rock.disabled = true;
+    paper.disabled = true;
+    scissors.disabled = true;
+    nextRoundDOM.disabled=false;
+    updateChoices(playerSelection, computerSelection);
+    if (playerSelection === computerSelection) {
+        playerScoreDOM.textContent = `Player: ${++playerScore}`
+        computerScoreDOM.textContent = `Computer: ${++computerScore}`
+    }
+    if (
+        (playerSelection === 'rock' && computerSelection === 'scissors') ||
+        (playerSelection === 'scissors' && computerSelection === 'paper') ||
+        (playerSelection === 'paper' && computerSelection === 'rock')
+    ) {
+        playerScoreDOM.textContent = `Player: ${++playerScore}`
+    }
+    if (
+        (computerSelection === 'rock' && playerSelection === 'scissors') ||
+        (computerSelection === 'scissors' && playerSelection === 'paper') ||
+        (computerSelection === 'paper' && playerSelection === 'rock')
+    ) {
+        computerScoreDOM.textContent = `Computer: ${++computerScore}`
     }
 }
 
-for (let i = 0; i < 0; i++) {
-    const playerSelection = prompt();
-    const computerSelection = getComputerChoice();
-    console.log(computerSelection);
-    console.log(playRound(playerSelection, computerSelection));
+function updateChoices(playerSelection, computerSelection) {
+    switch (playerSelection) {
+        case 'rock':
+            playerSign.textContent = '✊'
+            break
+        case 'paper':
+            playerSign.textContent = '✋'
+            break
+        case 'scissors':
+            playerSign.textContent = '✌️'
+            break
+    }
+
+    switch (computerSelection) {
+        case 'rock':
+            computerSign.textContent = '✊'
+            break
+        case 'paper':
+            computerSign.textContent = '✋'
+            break
+        case 'scissors':
+            computerSign.textContent = '✌️'
+            break
+    }
 }
+
+function nextRound() {
+    rock.disabled = false;
+    paper.disabled = false;
+    scissors.disabled = false;
+    nextRoundDOM.disabled = true;
+    playerSign.textContent="❔";
+    computerSign.textContent="❔";
+}
+
+function startGame() {
+    document.getElementById('start-button').style.display = "none";
+    document.getElementById('game').style.display = "block"
+}
+
+document.getElementById('game').style.display = "none"
